@@ -46,7 +46,7 @@ class LSTM(object):
             self.cellSize, forget_bias=1.0, state_is_tuple=True)
 
         with tf.name_scope('init-state'):
-            self.cellInitState = lstmCell.zeroState(
+            self.cellInitState = lstmCell.zero_state(
                 self.batchSize, dtype=tf.float32)
 
         self.cellOutputs, self.cellFinalState = tf.nn.dynamic_rnn(
