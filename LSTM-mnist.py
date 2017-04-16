@@ -40,15 +40,15 @@ if __name__ == '__main__':
         batchXs, batchYs = mnist.train.next_batch(BATCH_SIZE)
         batchXs = batchXs.reshape([BATCH_SIZE, STEPS_SIZE, INPUT_SIZE])
         sess.run([model.trainOP], feed_dict={
-            x: batchXs,
-            y: batchYs
+            model.xs: batchXs,
+            model.ys: batchYs
         })
 
         if step % 20 == 0:
             accuracy = tf.reduce_mean(tf.cast(model.prediction, tf.float32))
             print(sess.run(accuracy, feed_dict={
-                x: batchXs,
-                y: batchYs
+                model.xs: batchXs,
+                model.ys: batchYs
             }))
 
         step += 1
