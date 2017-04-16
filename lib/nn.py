@@ -14,13 +14,13 @@ class LSTM(object):
             self.ys = tf.placeholder(
                 tf.float32, [None, nSteps, outputSize], name='ys')
 
-        with tf.name_scope('input hidden'):
+        with tf.name_scope('input-hidden'):
             self.addInputLayer()
         
-        with tf.name_scope('LSTM cell'):
+        with tf.name_scope('LSTM-cell'):
             self.addCell()
 
-        with tf.name_scope('output hidden'):
+        with tf.name_scope('output-hidden'):
             self.addOutoutLayer()
 
         with tf.name_scope('cost'):
@@ -44,7 +44,7 @@ class LSTM(object):
             lstmCell = tf.contrib.rnn.BasicLSTMCell(
                 self.cellSize, forget_bias=1.0, state_is_tuple=True)
 
-            with tf.name_scope('init state'):
+            with tf.name_scope('init-state'):
                 self.cellInitState = lstmCell.zeroState(
                     self.batchSize, dtype=tf.float32)
 
@@ -69,11 +69,11 @@ class LSTM(object):
                 softmax_loss_function=self.ms_error,
                 name='losses')
 
-            with tf.name_scope('average cost'):
+            with tf.name_scope('average-cost'):
                 self.cost = tf.div(
                     tf.reduce_sum(losses, name='losses_sum'),
                     self.batchSize,
-                    name='average cost')
+                    name='average-cost')
 
                 tf.summary.scalar('cost', self.cost)
 
