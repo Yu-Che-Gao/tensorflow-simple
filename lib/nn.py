@@ -32,8 +32,9 @@ class LSTM(object):
 
     def addInputLayer(self):
         lInputx = tf.reshape(self.xs, [-1, self.inputSize], name='2_2D')
-        WsIn = self._weightVariable([self.inputSize, self.cellSize])
-        bsIn = self._biasVariable([self.cellSize])
+        WsIn = self._weightVariable(
+            [self.inputSize, self.cellSize], name='input-weights')
+        bsIn = self._biasVariable([self.cellSize], name='input-biases')
 
         with tf.name_scope('Ws_plus_b'):
             lInputy = tf.matmul(lInputx, WsIn) + bsIn
@@ -55,8 +56,9 @@ class LSTM(object):
     def addOutoutLayer(self):
         lOuputx = tf.reshape(
             self.cellOutputs, [-1, self.cellSize], name='2_2D')
-        WsOut = self._weightVariable([self.cellSize, self.outputSize])
-        bsOut = self._biasVariable([self.outputSize])
+        WsOut = self._weightVariable(
+            [self.cellSize, self.outputSize], name='ouput-weights')
+        bsOut = self._biasVariable([self.outputSize], name='output-biases')
 
         with tf.name_scope('Ws_plus_b'):
             self.prediction = tf.matmul(lOutputx, WsOut) + bsOut
