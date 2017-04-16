@@ -65,8 +65,8 @@ class LSTM(object):
 
     def computeCost(self):
         losses = tf.contrib.legacy_seq2seq.sequence_loss_by_example(
-            [tf.reshape(self.predition, [-1], name='reshape prediction')],
-            [tf.reshape(self.ys, [-1], name='reshape target')],
+            [tf.reshape(self.prediction, [-1], name='reshape-prediction')],
+            [tf.reshape(self.ys, [-1], name='reshape-target')],
             [tf.ones([self.batchSize * self.nSteps], dtype=dtypes.float32)],
             average_across_timesteps=True,
             softmax_loss_function=self.ms_error,
