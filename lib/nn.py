@@ -69,7 +69,7 @@ class LSTM(object):
             [tf.reshape(self.ys, [-1], name='reshape-target')],
             [tf.ones([self.batchSize * self.nSteps], dtype=tf.float32)],
             average_across_timesteps=True,
-            softmax_loss_function=self.ms_error,
+            softmax_loss_function=self.msError,
             name='losses')
 
         with tf.name_scope('average-cost'):
