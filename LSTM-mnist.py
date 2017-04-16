@@ -45,5 +45,5 @@ if __name__ == '__main__':
 
         if i % 20 == 0:
             print('cost: ', round(cost, 4))
-            returt = sess.run(merged, feedDict)
+            result = sess.run(merged, feedDict)
             writer.add_summary(result, i)
