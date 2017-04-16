@@ -6,7 +6,7 @@ mnist = input_data.read_data_sets('MNIST_data', one_hot=True)
 
 # hyperparameters
 lr = 0.001
-training_iters = 100
+training_iters = 10000
 batch_size = 128
 
 n_inputs = 28   # MNIST data input (img shape: 28*28)
