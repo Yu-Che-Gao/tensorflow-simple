@@ -37,7 +37,7 @@ if __name__ == '__main__':
 
     step = 0
     while step * BATCH_SIZE < 100000:
-        batchXs, batchYs = mnsit.train.next_batch(BATCH_SIZE)
+        batchXs, batchYs = mnist.train.next_batch(BATCH_SIZE)
         batchXs = batchXs.reshape([BATCH_SIZE, STEPS_SIZE, INPUT_SIZE])
         sess.run([model.trainOP], feed_dict={
             x: batchXs,
