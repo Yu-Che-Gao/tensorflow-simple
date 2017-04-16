@@ -1,8 +1,8 @@
 import tensorflow as tf
-from tensorflow.examples.tutorials.mnist as inputData
+from tensorflow.examples.tutorials.mnist import input_data
 
 # this is data
-mnist = inputData.read_data_set('MNIST_data', one_hot=True)
+mnist = input_data.read_data_set('MNIST_data', one_hot=True)
 
 # hyperparameters
 lr = 0.001
