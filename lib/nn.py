@@ -54,7 +54,7 @@ class LSTM(object):
             lstmCell, self.lInputy, initial_state=self.cellInitState, time_major=False)
 
     def addOutoutLayer(self):
-        lOuputx = tf.reshape(
+        lOutputx = tf.reshape(
             self.cellOutputs, [-1, self.cellSize], name='2_2D')
         WsOut = self._weightVariable(
             [self.cellSize, self.outputSize], name='ouput-weights')
